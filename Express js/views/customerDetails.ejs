@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers</title>
+  <style>
+     
+      body{
+        background-color :rgb(244, 117, 79);
+      }
+      h1{
+        padding:20px;
+        text-align : center;
+        color : rgb(0,0,0);
+        /* background-color: rgb(168, 163, 163); */
+      }
+
+      table{
+        color : rgb(255, 255, 255);
+        margin-top : 0px;
+        margin-left : auto;
+        margin-right : auto;
+        /* background-color: maroon; */
+        border : 2px solid rgb(3, 7, 11);
+        border-radius : 10px;
+        width : auto;
+        background-color:rgba(0, 0, 0, 0.507);
+        
+      }
+
+      table th{
+        background-color : rgba(0, 0, 0, 0.475);
+        border-radius : 10px;
+        height : 50px;
+        padding: 0 20px;
+        
+      }
+
+      table td{
+        text-align : center;
+        /* background-color: goldenrod; */
+        border-radius : 10px;
+        height : 50px;
+        color : rgb(255, 255, 255);
+      }
+
+      ul {
+        list-style-type : none;
+        padding : 0;
+        overflow : hidden;
+        background-color :white;
+        width : 237px;
+        border-radius : 10px;
+      }
+      ul:hover{
+        background-color: black;
+        
+      }
+
+      li {
+        float : left;
+      }
+
+      li a {
+        display : block;
+        text-decoration : none;
+        padding : 8px;
+        font-weight : bold;
+        font-size : 20px;
+        color :rgb(0, 0, 0);
+      }
+
+      li a:hover{
+        color:rgb(255, 255, 255);
+       }
+
+      button{
+        border-radius : 20px;
+        width : 100px;
+        height : 40px;
+        font-weight : bold;
+      }
+      button:hover{
+        background-color: black;
+        color: white;
+      }
+      #quickLinks{
+        display : flex;
+      }
+      #quickLinks button{
+        margin-left : 10px;
+      }
+        
+  </style>
+  <script>
+    const addCustomer = function(){
+        const a=document.createElement('a');
+        a.href='http://localhost:2000/login';
+        a.click();
+    }
+    const updateCustomer = function(){
+        const a=document.createElement('a');
+        a.href='http://localhost:2000/update';
+        a.click();
+    }
+    const checkId= function(c){
+        const a=document.createElement('a');
+        a.href=`http://localhost:3000/manager/inActivateManager/${c}`;
+        a.click();
+    }
+    const checkVal= function(c){
+        const a=document.createElement('a');
+        a.href=`http://localhost:3000/manager/ActivateManager/${c}`;
+        a.click();
+    }
+    // const checkId= function(c){
+    //     let url=`http://localhost:3000/manager/inActivateManager/${c}`;
+    //     fetch(url,{
+    //       method:'post',
+    //       headers:{
+    //                 "Content-Type" : 'application/json'
+    //             }
+    // })
+    // .then(res=>{
+    //   return res.json();
+    // })
+    // .then(data=>{
+    //   console.log(data);
+    // })
+    // }
+      
+  </script>
+</head>
+<body>
+  <h1>CUSTOMER DETAILS</h1><hr>
+  <ul>
+    <li> <a href="/">Home</a> </li>
+  </ul>
+
+  <br>
+  
+  <div id="quicklinks">
+      <p> quick links : </p>
+      <button onclick = 'addCustomer()'> ADD </button>
+      <button onclick = 'updateCustomer()'>UPDATE</button>
+  </div>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>password</th>
+      <th>department_id</th>
+      <th>contactNumber</th>
+      <th>isDeleted</th>
+    </tr>
+    <% if(results.length > 0)
+    { console.log("----",results); 
+      let datas = results.rows
+      results.forEach(function(datas){
+        %>
+        <tr > 
+          <td onclick="checkId(`<%= datas.id %>`)"><%= datas.id %></td>
+          <td><%= datas.name %></td>
+          <td><%= datas.email %></td>
+          <td><%= datas.password %></td>
+          <td><%= datas.department_id %></td>
+          <td><%= datas.contactNumber %></td>
+          <td onclick="checkVal(`<%= datas.id %>`)"><%= datas.isDeleted %></td>
+        
+        </tr>
+        <%
+      });
+    }
+    else{
+      %>
+      <tr>
+        <td>no data found</td>
+      </tr>
+      <%
+    }
+    %>
+  </table>
+</body>
+</html> 

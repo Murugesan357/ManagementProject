@@ -1,0 +1,106 @@
+paths:
+  /timeoff/applyLeave:
+    post:
+      description: apply for leave
+      tags:
+        - leavemanagement
+      parameters:
+        - in: body
+          name: body
+          description: insert leave details
+          schema:
+            type: object
+            properties:
+              userId:
+                type: integer
+              designation:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              reason:
+                type: string
+              reMarks:
+                type: string
+      responses:
+        "200":
+          description: success
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              userId:
+                type: integer
+              designation:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              reason:
+                type: string
+              reMarks:
+                type: string
+              createdAt:
+                type: string
+              updatedAt:
+                typr: string
+        "400":
+          description: error
+          schema:
+            type: object
+            properties:
+              err:
+                type: string
+              message:
+                type: string
+  /timeoff/whoIsOut/{month}:
+    get:
+      description: get leave details in given month
+      tags:
+        - leavemanagement
+      parameters:
+        - in: path
+          name: month
+          description: get leave employee details in given month
+          schema:
+            type: integer
+            properties:
+              month:
+                type: integer
+      responses:
+        "200":
+          description: success
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              userId:
+                type: integer
+              designation:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              reason:
+                type: string
+              reMarks:
+                type: string
+              createdAt:
+                type: string
+              updatedAt:
+                typr: string
+        "400":
+          description: error
+          schema:
+            type: object
+            properties:
+              err:
+                type: string
+              message:
+                type: string
+              

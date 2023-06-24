@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        html, body {
+          font-size : 15px;
+          justify-content : center;
+          font-family : Roboto, Arial, sans-serif;
+          background-color: tomato;
+        }
+        
+        input[type=text], input[type=password] {
+          width   : 300px;
+          padding : 16px 8px;
+          margin  : 8px 0;
+          display : inline-block;
+          font-weight: bolder;
+
+         
+        }
+        button {
+          background-color : navy;
+          color  : white;
+          padding : 14px 0;
+          margin : 10px 0;
+          border : none;
+          cursor : grabbing;
+          width  : 100%;
+        }
+        h1 {
+          text-align : center;
+          font-size  : 18;
+        }
+        p{
+            font-size: larger;
+            font-weight: bolder;
+        }
+        
+        .formcontainer {
+          text-align : left;
+          margin     : 24px 50px 12px;
+        }
+       
+       
+    </style>
+</head>
+<body>
+    <h1>CUSTOMER DETAILS</h1><hr>
+    <br>
+    <form>
+
+        <div class = "formcontainer">
+            
+            <div class = "container">
+              <p>First Name :</p>  
+              <input id = "firstName" type = "text" value="<%= result.firstName %>">
+              <p>Last Name :</p>
+              <input id = "lastName"  type = "text" value="<%= result.lastName %>">
+            </div>
+        </div>
+    </form>
+</body>
+</html> 
